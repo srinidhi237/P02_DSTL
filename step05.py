@@ -52,6 +52,31 @@ print("Col min:",per_app_min)
 per_day_min = arr.min(axis=1)
 print("Row min:",per_day_min)
 
+#Part C
 
+apps=np.array(apps)
+winners = apps[arr.argmax(axis=1)] #this will give error, if apps is not a numpy array
+
+'''arr.argmax(axis=1) - it gives 30 values
+    If it is bool indexing - T(includes),F(excludes)
+    since it is apps[[(30 values)]] - double brackets
+'''
+
+#How many days each app won - use unique
+app, count = np.unique(winners,return_counts=True)
+
+print(dict(zip(app.tolist(),count.tolist()))) #zip array - iterator - read only once memory
+# tolist() - helps to remove np.str_ , np.int64 etc...
+
+
+'''From winners we need unique values - so unique(winners)
+    line 65 gives - max 4 outputs (since only unique 4 app names)
+    If only one app won all days - output is 1.
+    Hence line 65 o/p can be 1 or 2 or 3 or 4.
+
+    Difference b/w - Set and np.unique()
+    - we don't have count in set
+    - Set only for 1D, but unique for 1D,2D,3D...nD
+'''
 
 
