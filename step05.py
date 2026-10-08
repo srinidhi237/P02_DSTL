@@ -79,4 +79,38 @@ print(dict(zip(app.tolist(),count.tolist()))) #zip array - iterator - read only 
     - Set only for 1D, but unique for 1D,2D,3D...nD
 '''
 
+#PART D
+
+shares = arr/per_day[:,None] * 100
+print(shares)
+
+shares2 = arr.mean(axis=1)
+print(shares2)
+
+'''shares = arr/per_day
+    arr - 2D | per_day - 1D
+    What is shares - 1D or 2D????
+    2D/1D - can't do this division
+
+    (30,) , (30,1) - both are different
+
+    np.newaxis - it is a property in numpy that allows to add one extra axis.
+    ie, from (30,) to (30,1)
+
+    Now Broadcast - converting 1D per_day to 2D
+    (30,4)/(30,1) - Valid arithmetic
+
+    Hence, Syntax: arr/per_day[:,None]
+
+    Shape:
+    (30,) - 30 1D values (arr 1st val/per_day 1st val and so on...this is how numpy division works)
+            - but we need, per_day first value 4 times(coz 4 apps in one row)
+    (30,1) - thats why we convert to (30,1) from (30,)
+            - here we are taking per_day as 30 rows, not as 30 values
+            - Now, arr 1st row and per_day 1st row 
+
+    So, the necessity of the [:,None] is 10*
+
+'''
+
 
