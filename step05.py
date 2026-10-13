@@ -101,6 +101,7 @@ print(shares2)
     (30,4)/(30,1) - Valid arithmetic
 
     Hence, Syntax: arr/per_day[:,None]
+    None(no extra columns) - shortcut for np.newaxis
 
     Shape:
     (30,) - 30 1D values (arr 1st val/per_day 1st val and so on...this is how numpy division works)
@@ -113,4 +114,26 @@ print(shares2)
 
 '''
 
+#divide the whole table by each app's max
 
+    #per_app_max = arr.max(axis=0)
+print("Per app max:",per_app_max)
+print(per_app_max.shape)  #per_app_max - max of each app (4,)
+shares_app = arr/per_app_max*100    # (30,4)/(4,)-division is possible, no need for broadcast
+print(shares_app)
+
+'''We have 2 options 
+    - either convert per_app_max (4,) to (1,4)
+     ie, (30,4)/(1,4)   using arr/per_app_max[None,:]
+     
+     [None,:] - means no extra rows are added, consider each col (...)
+
+     (or)
+
+     arr/per_app => (30,4)/(4,) - will naturally work,
+        coz from right to left : 1st val in Dr & 1st val in Nr are matching
+
+    arr/per_app_max[None,:] and arr/per_app - exactly same
+
+     
+'''
